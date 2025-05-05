@@ -483,7 +483,8 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/events');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/events`);
+
         const upcoming = res.data.filter((event) =>
           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
         );
